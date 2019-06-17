@@ -26,3 +26,10 @@ func TestCreatePath(t *testing.T) {
 		fmt.Println(err.Error())
 	}
 }
+
+func TestRemoveAll(t *testing.T) {
+	err := RemoveAll("./test1")
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+}

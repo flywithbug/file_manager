@@ -87,3 +87,7 @@ func CreatePath(path string)error  {
 	}
 	return nil
 }
+
+func RemoveAll(path string)error  {
+	return os.RemoveAll(path)
+}
