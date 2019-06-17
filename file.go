@@ -6,7 +6,27 @@ import (
 	"strings"
 )
 
-func WriteFile(path ,content string,cover bool)error  {
+func WriteFileString(path ,content string,cover bool)error  {
+	if !cover{
+		ex,_ := PathExists(path)
+		if ex {
+			return errors.New("PathExists")
+		}
+	}
+
+	fil,err := os.Create(path)
+	if err != nil {
+		err = CreatePath(path)
+		if err != nil {
+			return err
+		}
+		return WriteFileString(path,content,cover)
+	}
+	fil.WriteString(content)
+	return nil
+}
+
+func WriteFile(path string,content []byte,cover bool)error  {
 	if !cover{
 		ex,_ := PathExists(path)
 		if ex {
@@ -22,7 +42,7 @@ func WriteFile(path ,content string,cover bool)error  {
 		}
 		return WriteFile(path,content,cover)
 	}
-	fil.WriteString(content)
+	fil.Write(content)
 	return nil
 }
 

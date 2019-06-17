@@ -12,7 +12,11 @@ func main()  {
 	}
 	fmt.Println(e)
 
-	err = file_manager.WriteFile("./test1/1.m","test.a.com",true)
+	err = file_manager.WriteFileString("./test1/1.m","test.a.com",true)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	err = file_manager.WriteFile("./test1/1.h",[]byte("test.a.com"),true)
 	if err != nil {
 		fmt.Println(err.Error())
 	}
