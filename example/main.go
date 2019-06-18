@@ -1,83 +1,28 @@
 package main
 
 import (
-	"fmt"
 	"sync"
 	"github.com/flywithbug/file_manager"
+	"fmt"
 )
 
 func main()  {
-	//e,err := file_manager.PathExists("./test")
-	//if err != nil {
-	//	fmt.Println(err.Error())
-	//}
-	//fmt.Println(e)
+	writeFileTest()
+	readFileList()
+}
 
-	//err := file_manager.WriteFileString("./test1/1.m","test.a.com.ccc",true)
-	//if err != nil {
-	//	fmt.Println(err.Error())
-	//}
-	//err = file_manager.WriteFile("./test1/1.h",[]byte("test.a.com.cc"),true)
-	//if err != nil {
-	//	fmt.Println(err.Error())
-	//}
+func readFileList()  {
+	list,err := file_manager.GetFileList("./")
+	if err != nil{
+		fmt.Println(err)
+	}
+	fmt.Println(list)
+}
 
-
-	//file_manager.RemoveAll("./test1")
+func writeFileTest()  {
 
 	var wg sync.WaitGroup
 	var urls = []string{
-		"http://www.golang.org/",
-		"http://www.google.com/",
-		"http://www.somestupidname.com/",
-		"http://www.golang.org/",
-		"http://www.google.com/",
-		"http://www.somestupidname.com/",
-		"http://www.golang.org/",
-		"http://www.google.com/",
-		"http://www.somestupidname.com/",
-		"http://www.golang.org/",
-		"http://www.google.com/",
-		"http://www.somestupidname.com/",
-		"http://www.golang.org/",
-		"http://www.google.com/",
-		"http://www.somestupidname.com/",
-		"http://www.golang.org/",
-		"http://www.google.com/",
-		"http://www.somestupidname.com/",
-		"http://www.golang.org/",
-		"http://www.google.com/",
-		"http://www.somestupidname.com/",
-		"http://www.golang.org/",
-		"http://www.google.com/",
-		"http://www.somestupidname.com/",
-		"http://www.golang.org/",
-		"http://www.google.com/",
-		"http://www.somestupidname.com/",
-		"http://www.golang.org/",
-		"http://www.google.com/",
-		"http://www.somestupidname.com/",
-		"http://www.golang.org/",
-		"http://www.google.com/",
-		"http://www.somestupidname.com/",
-		"http://www.golang.org/",
-		"http://www.google.com/",
-		"http://www.somestupidname.com/",
-		"http://www.golang.org/",
-		"http://www.google.com/",
-		"http://www.somestupidname.com/",
-		"http://www.golang.org/",
-		"http://www.google.com/",
-		"http://www.somestupidname.com/",
-		"http://www.golang.org/",
-		"http://www.google.com/",
-		"http://www.somestupidname.com/",
-		"http://www.golang.org/",
-		"http://www.google.com/",
-		"http://www.somestupidname.com/",
-		"http://www.golang.org/",
-		"http://www.google.com/",
-		"http://www.somestupidname.com/",
 		"http://www.golang.org/",
 		"http://www.google.com/",
 		"http://www.somestupidname.com/",
@@ -104,7 +49,4 @@ func main()  {
 	// Wait for all goroutines to finish.
 	wg.Wait()
 	fmt.Println("Game Over")
-
-
-
 }
