@@ -22,6 +22,7 @@ func WriteFileString(path ,content string,cover bool)error  {
 		}
 		return WriteFileString(path,content,cover)
 	}
+	defer fil.Close()
 	fil.WriteString(content)
 	return nil
 }
@@ -42,6 +43,7 @@ func WriteFile(path string,content []byte,cover bool)error  {
 		}
 		return WriteFile(path,content,cover)
 	}
+	defer fil.Close()
 	fil.Write(content)
 	return nil
 }

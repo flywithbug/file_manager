@@ -20,4 +20,7 @@ func main()  {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
+
+
+	//file_manager.RemoveAll("./test1")
 }
