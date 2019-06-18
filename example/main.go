@@ -17,6 +17,14 @@ func readFileList()  {
 		fmt.Println(err)
 	}
 	fmt.Println(list)
+
+	for _,v := range list{
+		b,err := file_manager.ReadAll(v)
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Println(string(b))
+	}
 }
 
 func writeFileTest()  {
