@@ -12,19 +12,18 @@ func main()  {
 }
 
 func readFileList()  {
-	list,err := file_manager.GetFileList("./")
+	_,err := file_manager.GetFileListString("./")
 	if err != nil{
 		fmt.Println(err)
 	}
-	fmt.Println(list)
-
-	for _,v := range list{
-		b,err := file_manager.ReadAll(v)
-		if err != nil {
-			fmt.Println(err)
-		}
-		fmt.Println(string(b))
-	}
+	//fmt.Println(list)
+	//for _,v := range list{
+	//	b,err := file_manager.ReadAll(v)
+	//	if err != nil {
+	//		fmt.Println(err)
+	//	}
+	//	fmt.Println(string(b))
+	//}
 }
 
 func writeFileTest()  {

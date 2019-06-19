@@ -1,1 +1,1 @@
-http://www.golang.org/
+http://www.somestupidname.com/

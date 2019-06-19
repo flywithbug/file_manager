@@ -1,1 +1,1 @@
-http://www.google.com/ame.com/
+http://www.somestupidname.com/

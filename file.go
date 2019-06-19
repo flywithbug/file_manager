@@ -6,6 +6,8 @@ import (
 	"strings"
 )
 
+
+
 func WriteFileString(path ,content string,cover bool)error  {
 	if !cover{
 		ex,_ := PathExists(path)
@@ -13,7 +15,6 @@ func WriteFileString(path ,content string,cover bool)error  {
 			return errors.New("PathExists")
 		}
 	}
-
 	fil,err := os.Create(path)
 	if err != nil {
 		err = CreatePath(path)
@@ -34,7 +35,6 @@ func WriteFile(path string,content []byte,cover bool)error  {
 			return errors.New("PathExists")
 		}
 	}
-
 	fil,err := os.Create(path)
 	if err != nil {
 		err = CreatePath(path)
@@ -85,7 +85,6 @@ func CreatePath(path string)error  {
 				return err
 			}
 		}
-
 	}
 	return nil
 }
