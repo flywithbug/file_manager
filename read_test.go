@@ -12,3 +12,11 @@ func TestGetFileList(t *testing.T) {
 	}
 	fmt.Println(list)
 }
+
+func TestReadAll(t *testing.T) {
+	b,err := ReadAll("./read.go")
+	if err != nil{
+		fmt.Println(err)
+	}
+	fmt.Println(string(b))
+}

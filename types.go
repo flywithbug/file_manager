@@ -6,13 +6,14 @@ import (
 )
 
 type FileInfo struct {
+	Path string
 	Name  string
 	Size  int64
 	ModifyTime time.Time
 	IsDir   bool
 	FileMode os.FileMode
 
-	FileInfo FileInfo
+	FileInfo os.FileInfo
 }
 
 func makeFileInfo(info os.FileInfo)FileInfo  {
