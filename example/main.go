@@ -8,7 +8,7 @@ import (
 
 func main()  {
 	//writeFileTest()
-	readFileList()
+	fmt.Println(file_manager.CurrentDir())
 }
 
 func readFileList()  {
