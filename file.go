@@ -92,3 +92,33 @@ func CreatePath(path string)error  {
 func RemoveAll(path string)error  {
 	return os.RemoveAll(path)
 }
+
+
+func AppendFileString(path ,content string)error  {
+	fil,err := os.OpenFile(path,os.O_RDWR|os.O_CREATE|os.O_APPEND,0644)
+	if err != nil {
+		err = CreatePath(path)
+		if err != nil {
+			return err
+		}
+		return AppendFileString(path,content)
+	}
+	defer fil.Close()
+	fil.WriteString(content)
+	return nil
+}
+
+func AppendFile(path string,content []byte)error  {
+	fil,err := os.OpenFile(path,os.O_RDWR|os.O_CREATE|os.O_APPEND,0644)
+	if err != nil {
+		err = CreatePath(path)
+		if err != nil {
+			return err
+		}
+		return AppendFile(path,content)
+	}
+	defer fil.Close()
+	fil.Write(content)
+	return nil
+}
+
