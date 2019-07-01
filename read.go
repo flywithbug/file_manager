@@ -20,3 +20,4 @@ func ReadAll(name string)([]byte,error)  {
 	}
 	return buffer,nil
 }
+
