@@ -4,9 +4,12 @@ import (
 
 	"runtime"
 	"path"
+	"path/filepath"
+	"os"
+	"strings"
 )
 
-func CurrentDir()string  {
+func CurrentExeDir()string  {
 	_, filename, _, ok := runtime.Caller(1)
 	var cwdPath string
 	if ok {
@@ -15,4 +18,13 @@ func CurrentDir()string  {
 		cwdPath = "./"
 	}
 	return cwdPath
+}
+
+
+func CurrentDir() string {
+	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	if err != nil {
+		return ""
+	}
+	return strings.Replace(dir, "\\", "/", -1)
 }
