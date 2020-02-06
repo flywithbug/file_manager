@@ -1,12 +1,12 @@
 package file_manager
 
 import (
-	"path/filepath"
 	"os"
+	"path/filepath"
 )
 
-func GetFileListString(root string)([]string,error)  {
-	list := make([]string,0)
+func GetFileListString(root string) ([]string, error) {
+	list := make([]string, 0)
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
@@ -14,17 +14,17 @@ func GetFileListString(root string)([]string,error)  {
 		if info.IsDir() {
 			return nil
 		}
-		list = append(list,path)
+		list = append(list, path)
 		return nil
 	})
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
-	return list,nil
+	return list, nil
 }
 
-func GetFileList(root string)([]FileInfo,error)  {
-	list := make([]FileInfo,0)
+func GetFileList(root string) ([]FileInfo, error) {
+	list := make([]FileInfo, 0)
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
@@ -33,7 +33,7 @@ func GetFileList(root string)([]FileInfo,error)  {
 		return nil
 	})
 	if err != nil {
-		return nil,err
+		return nil, err
 	}
-	return list,nil
+	return list, nil
 }

@@ -1,25 +1,23 @@
 package file_manager
 
 import (
-
-	"runtime"
+	"os"
 	"path"
 	"path/filepath"
-	"os"
+	"runtime"
 	"strings"
 )
 
-func CurrentExeDir()string  {
+func CurrentExeDir() string {
 	_, filename, _, ok := runtime.Caller(1)
 	var cwdPath string
 	if ok {
 		cwdPath = path.Join(path.Dir(filename), "") // the the main function file directory
-	}  else  {
+	} else {
 		cwdPath = "./"
 	}
 	return cwdPath
 }
-
 
 func CurrentDir() string {
 	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))

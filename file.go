@@ -1,47 +1,45 @@
 package file_manager
 
 import (
-	"os"
 	"errors"
+	"os"
 	"strings"
 )
 
-
-
-func WriteFileString(path ,content string,cover bool)error  {
-	if !cover{
-		ex,_ := PathExists(path)
+func WriteFileString(path, content string, cover bool) error {
+	if !cover {
+		ex, _ := PathExists(path)
 		if ex {
 			return errors.New("PathExists")
 		}
 	}
-	fil,err := os.Create(path)
+	fil, err := os.Create(path)
 	if err != nil {
 		err = CreatePath(path)
 		if err != nil {
 			return err
 		}
-		return WriteFileString(path,content,cover)
+		return WriteFileString(path, content, cover)
 	}
 	defer fil.Close()
 	fil.WriteString(content)
 	return nil
 }
 
-func WriteFile(path string,content []byte,cover bool)error  {
-	if !cover{
-		ex,_ := PathExists(path)
+func WriteFile(path string, content []byte, cover bool) error {
+	if !cover {
+		ex, _ := PathExists(path)
 		if ex {
 			return errors.New("PathExists")
 		}
 	}
-	fil,err := os.Create(path)
+	fil, err := os.Create(path)
 	if err != nil {
 		err = CreatePath(path)
 		if err != nil {
 			return err
 		}
-		return WriteFile(path,content,cover)
+		return WriteFile(path, content, cover)
 	}
 	defer fil.Close()
 	fil.Write(content)
@@ -59,24 +57,24 @@ func PathExists(path string) (bool, error) {
 	return false, err
 }
 
-func createPath(filePath string)error  {
-	b,err := PathExists(filePath)
-	if err != nil{
+func createPath(filePath string) error {
+	b, err := PathExists(filePath)
+	if err != nil {
 		return err
 	}
-	if !b{
-		err := os.Mkdir(filePath,os.ModePerm)
+	if !b {
+		err := os.Mkdir(filePath, os.ModePerm)
 		return err
 	}
 	return nil
 }
 
-func CreatePath(path string)error  {
-	list := strings.Split(path,"/")
-	for i := 1;i < len(list);i ++ {
-		path := strings.Join(list[:i],"/") + "/"
-		b,err := PathExists(path)
-		if err != nil{
+func CreatePath(path string) error {
+	list := strings.Split(path, "/")
+	for i := 1; i < len(list); i++ {
+		path := strings.Join(list[:i], "/") + "/"
+		b, err := PathExists(path)
+		if err != nil {
 			return err
 		}
 		if !b {
@@ -89,36 +87,34 @@ func CreatePath(path string)error  {
 	return nil
 }
 
-func RemoveAll(path string)error  {
+func RemoveAll(path string) error {
 	return os.RemoveAll(path)
 }
 
-
-func AppendFileString(path ,content string)error  {
-	fil,err := os.OpenFile(path,os.O_RDWR|os.O_CREATE|os.O_APPEND,0644)
+func AppendFileString(path, content string) error {
+	fil, err := os.OpenFile(path, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0644)
 	if err != nil {
 		err = CreatePath(path)
 		if err != nil {
 			return err
 		}
-		return AppendFileString(path,content)
+		return AppendFileString(path, content)
 	}
 	defer fil.Close()
 	fil.WriteString(content)
 	return nil
 }
 
-func AppendFile(path string,content []byte)error  {
-	fil,err := os.OpenFile(path,os.O_RDWR|os.O_CREATE|os.O_APPEND,0644)
+func AppendFile(path string, content []byte) error {
+	fil, err := os.OpenFile(path, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0644)
 	if err != nil {
 		err = CreatePath(path)
 		if err != nil {
 			return err
 		}
-		return AppendFile(path,content)
+		return AppendFile(path, content)
 	}
 	defer fil.Close()
 	fil.Write(content)
 	return nil
 }
-

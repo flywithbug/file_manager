@@ -1,12 +1,12 @@
 package file_manager
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func TestPathExists(t *testing.T) {
-	e,err := PathExists("./")
+	e, err := PathExists("./")
 	if err != nil {
 		fmt.Println(err.Error())
 	}
